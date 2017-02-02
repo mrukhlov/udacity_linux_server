@@ -63,9 +63,10 @@ sudo chown grader:grader /home/grader/.ssh/authorized_keys
 ### Change the SSH port from 22 to 2200
 
 1. Backup SSH config `cp /etc/ssh/sshd_config /etc/ssh/sshd_config_backup`
-2. Open it with `vi /etc/ssh/sshd_config` and change `22` to `2200` 
-3. Save and quit `:x`
-4. Restart SSH service `service ssh restart`
+2. Open it with `vi /etc/ssh/sshd_config` and change `22` to `2200`
+3. Restrict `root` user login with `PermitRootLogin no`
+4. Save and quit `:x`
+5. Restart SSH service `service ssh restart`
 
 ### Configure the Uncomplicated Firewall
 
@@ -156,6 +157,15 @@ sys.path.insert(0, '/var/www/CatalogApp')
 from project import app as application
 ```
 
+### Compile mod_wsgi with python 2.7 (for AWS)
+1. `wget https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.21.tar.gz`
+2. `tar -xzf 4.4.21.tar.gz`
+3. `cd mod_wsgi-4.4.21`
+4. `yum install httpd-devel`
+5. `sudo yum install libtool`
+6. `./configure --with-python=/usr/bin/python2.7`
+7. `make; make install`
+
 ### Restart Apache
 1. Restart Apache`service apache2 restart`
 
@@ -172,3 +182,9 @@ from project import app as application
 [Creating Public keys](http://askubuntu.com/questions/53553/how-do-i-retrieve-the-public-key-from-a-ssh-private-key)
 
 [Changing The SSH Port](https://www.liquidweb.com/kb/changing-the-ssh-port/)
+
+[How do I permit specific users SSH access?](https://knowledgelayer.softlayer.com/learning/how-do-i-permit-specific-users-ssh-access)
+
+[sshd_config](https://www.freebsd.org/cgi/man.cgi?sshd_config(5))
+
+[Password Usage in Sudo](http://www.ducea.com/2006/06/18/linux-tips-password-usage-in-sudo-passwd-nopasswd/)
