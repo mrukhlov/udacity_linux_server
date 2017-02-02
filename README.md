@@ -34,6 +34,10 @@ Public IP Address: 52.24.24.158
 1. `sudo adduser grader`
 2. `touch /etc/sudoers.d/grader`
 3. Paste `grader ALL=(ALL) NOPASSWD:ALL` to `/etc/sudoers.d/grader`
+4. Add `Defaults    authenticate` to request user password when usging sudo
+5. Add `AllowUsers grader` to `/etc/ssh/sshd_config` file
+6. Also change `PasswordAuthentication` to `no`
+
 
 ### Update all currently installed packages
 
