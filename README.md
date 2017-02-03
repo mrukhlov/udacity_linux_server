@@ -75,7 +75,8 @@ sudo chown grader:grader /home/grader/.ssh/authorized_keys
 3. Allow SSH `ufw allow ssh`
 4. Allow HTTP `ufw allow http`
 5. Allow NTP `ufw allow ntp`
-6. `ufw enable`
+6. `sudo ufw allow 2200/tcp`
+7. `ufw enable`
 
 ### Configure the local timezone to UTC
 
